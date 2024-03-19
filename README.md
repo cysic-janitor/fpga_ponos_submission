@@ -14,7 +14,7 @@
 
 <!-- TOC --><a name="Running the kernels and bench"></a>
 # Running the kernels and bench
-Please check [this](sw/test_code/README.md).
+Please check [this](sw/README.md).
 
 <!-- TOC --><a name="msm"></a>
 # MSM
