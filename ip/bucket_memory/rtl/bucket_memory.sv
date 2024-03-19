@@ -43,7 +43,7 @@ module bucket_memory #(
   localparam LP_MEM_DATA_W = (P_DATA_PNT_W == 377) ? 378 * 4 : 396 * 4;
   localparam [P_DATA_PNT_W-1:0] LP_INIT_MEM_0 = (P_DATA_PNT_W == 377) ? 377'd0 : 381'd0;
   localparam [P_DATA_PNT_W-1:0] LP_INIT_MEM_1 = ((P_MUL_TYPE == "montgomery") && (P_DATA_PNT_W == 377)) ? 377'h8d6661e2fdf49a4cf495bf803c84e87b4e97b76e7c63059f7db3a98a7d3ff251409f837fffffb102cdffffffff :
-                                                ((P_MUL_TYPE == "barrett"   ) && (P_DATA_PNT_W == 377)) ? 377'd1 :
+                                                ((P_MUL_TYPE == "montgomery") && (P_DATA_PNT_W == 377)) ? 377'd1 :
                                                 ((P_MUL_TYPE == "montgomery") && (P_DATA_PNT_W == 381)) ? 381'h8d6661e2fdf49a4cf495bf803c84e87b4e97b76e7c63059f7db3a98a7d3ff251409f837fffffb102cdffffffff :
                                                                                                  381'd1;
 
