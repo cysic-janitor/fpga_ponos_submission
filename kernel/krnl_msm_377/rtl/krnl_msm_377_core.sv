@@ -443,7 +443,7 @@ module krnl_msm_377_core
 
       // Read stream - reduced scalars
       .axis_s_red_scal_data_i (red_scal_split_data_array[i]),
-      .axis_s_red_scal_valid_i(red_scal_accu_valid[i]),
+      .axis_s_red_scal_valid_i(red_scal_split_valid[i]),
       .axis_s_red_scal_last_i (red_scal_split_valid[i]),
       .axis_s_red_scal_ready_o(red_scal_split_ready[i]),
 

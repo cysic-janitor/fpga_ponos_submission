@@ -53,7 +53,7 @@ module accumulator #(
   logic                                     red_scal_fifo_ready;
 
   logic [ P_NUM_AFF_COORD*P_DATA_PNT_W-1:0] merger_data_pnt;
-  logic [                 P_RED_SCLR_W-1:0] merger_red_scal_array     [0:P_NUM_WIN-1];
+  logic [  P_NUM_WIN-1:0][P_RED_SCLR_W-1:0] merger_red_scal_array;
   logic [                    P_NUM_WIN-1:0] merger_select;
   logic                                     merger_last;
   logic                                     merger_valid;

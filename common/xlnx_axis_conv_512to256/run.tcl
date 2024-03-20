@@ -1,11 +1,4 @@
-#/////////////////////////////////////////////////////////////////////////////////
-#  (C) Copyright Ponos Technology 2022
-#  All Rights Reserved
-#  *** Ponos Technology Confidential ***
-#  Description:
-# Authors: Farnam Maybodi <farnam@ponos.technology>
-#//////////////////////////////////////////////////////////////////////////////////
-source ../../common.tcl
+set ipName xlnx_axis_conv_512to256
 
 create_ip -name axis_dwidth_converter -vendor xilinx.com -library ip -module_name $ipName
 
