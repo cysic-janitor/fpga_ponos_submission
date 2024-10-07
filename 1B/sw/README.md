@@ -4,10 +4,16 @@
 
 To run build and run the bench, run `cargo bench --bench zprize_bench`.
 
-### Requirements
+### Runtime requirements
 
-1. XRT runtime
-2. GMP library (libgmp-dev)
+  1. Xilinx host-memory access of (at least) 1GB needs to be enabled.
+     `sudo xbutil configure --host-mem enable -s 1G`
+
+### Compile requirements
+
+  1. Rust
+  2. XRT runtime
+  3. GMP library (libgmp-dev)
 
 ## Summary
 This track focuses on end-to-end hardware acceleration for Poseidon-Merkle circuit using the BLS12-381 curve. Hashing is one of the most critical operations in state-of-the-art zero-knowledge applications. The Poseidon-Merkle algorithm is considered a zero-knowledge friendly cryptographic hash function.
