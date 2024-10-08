@@ -9,6 +9,8 @@
       + [Accumulator Controller](#accumulator-controller)
       + [Bucket Memory](#bucket-memory)
       + [Curve adders](#curve-adders)
+- [SW Acceleration](#sw-accel)
+- [Delivery test evidence](#delivery-test-evidence-vm)
 
 <!-- TOC end -->
 
@@ -86,3 +88,52 @@ The bucket memory acts as an intermediate storage to retrieve and store bucket v
 ### Curve adders
 
 The curve adder BLS12-381 is implemented following the formula described in: https://hyperelliptic.org/EFD/g1p/auto-shortw-xyzz.html#addition-madd-2008-s. It requires 8 multipliers and 2 squares. Inspired by the 377 implementation the multipliers for this version also combine Karatsuba with NAF specific for BLS12-381 field.
+
+<!-- TOC --><a name="sw-accel"></a>
+# SW Acceleration
+
+In the proof_system/widget/lookup and quotient_poly we idenfied opportunities for loop parallelization and achieved solely by this a speed-up of 5,7X.
+
+<!-- TOC --><a name="delivery-test-evidence-vm"></a>
+# Delivery test evidence
+```sh
+ubuntu@zprize-u250-3:~/work/zprize$ cargo bench --bench zprize_bench |& tee log-delivery-final
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/ubuntu/work/zprize/poly-commit/Cargo.toml
+workspace: /home/ubuntu/work/zprize/Cargo.toml
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /home/ubuntu/work/zprize/ponos-engine/Cargo.toml
+workspace: /home/ubuntu/work/zprize/Cargo.toml
+   Compiling plonk v0.8.2 (/home/ubuntu/work/zprize)
+    Finished bench [optimized] target(s) in 18.30s
+     Running benches/zprize_bench.rs (target/release/deps/zprize_bench-f33cffe171d88729)
+==============================
+Start generating 4 proofs
+Proof 0 is generated
+Time elapsed: 200.120348696s
+Proof 1 is generated
+Time elapsed: 398.452818701s
+Proof 2 is generated
+Time elapsed: 596.739917446s
+Proof 3 is generated
+Time elapsed: 794.336476694s
+The total prove generation time is 794.336480023s
+Aromatized cost for each proof is 198.584120303s
+==============================
+Start verifying 4 proofs
+Proof 0 is verified: true
+Time elapsed: 103.704757ms
+Proof 1 is verified: true
+Time elapsed: 192.497669ms
+Proof 2 is verified: true
+Time elapsed: 306.078274ms
+Proof 3 is verified: true
+Time elapsed: 441.830193ms
+The prove verification time is 441.833004ms
+Aromatized cost for each proof is 110.458525ms
+==============================
+ubuntu@zprize-u250-3:~/work/zprize$ hostname
+zprize-u250-3
+ubuntu@zprize-u250-3:~/work/zprize$ date
+Tue Oct  8 10:02:51 UTC 2024
+```
